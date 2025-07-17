@@ -1,0 +1,104 @@
+# Jekyll Configuration for MBC Rules Site
+
+title: "Master Bartending Championship - Official Rules"
+description: "Official rules and regulations for the Master Bartending Championship competitions"
+url: "https://trapadl.github.io"
+baseurl: "/mbc_rules"
+
+# GitHub Pages configuration
+github:
+  repository_url: "https://github.com/trapadl/mbc_rules"
+
+# Jekyll settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+timezone: Australia/Melbourne
+
+# Kramdown settings for better rule formatting
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
+  toc_levels: 1..3
+
+# Collections for organized content
+collections:
+  rules:
+    output: true
+    permalink: /:collection/:name/
+  recipes:
+    output: true
+    permalink: /:collection/:name/
+  equipment:
+    output: true
+    permalink: /:collection/:name/
+
+# Default front matter
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+      type: "rules"
+    values:
+      layout: "rule-page"
+  - scope:
+      path: ""
+      type: "recipes"
+    values:
+      layout: "recipe"
+  - scope:
+      path: ""
+      type: "equipment"
+    values:
+      layout: "equipment"
+
+# Site navigation
+navigation:
+  - title: "Home"
+    url: "/"
+  - title: "Speed Cocktail Rules"
+    url: "/rules/speed-cocktail-bartending/"
+  - title: "Traditional Rules"
+    url: "/rules/traditional-bartending/"
+  - title: "Membership"
+    url: "/rules/membership/"
+  - title: "Recipes"
+    url: "/recipes/"
+  - title: "Equipment"
+    url: "/equipment/"
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Build settings
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - scripts
+  - README.md
+  - CLAUDE.md
+  - rulesdumpt.txt
+
+# Include files
+include:
+  - _pages
+
+# Custom variables for MBC
+mbc:
+  current_version: "2025.1"
+  last_updated: "2025-07-17"
+  contact_email: "lachlan@example.com"
+  
+# Rule change tracking
+recent_changes_months: 3
+max_changes_display: 10

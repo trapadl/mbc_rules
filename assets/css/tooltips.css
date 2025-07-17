@@ -1,0 +1,343 @@
+/* Rule History Tooltips and Interactive Elements */
+
+/* Tooltip Base Styles */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip-content {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    z-index: 1000;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2c3e50;
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    white-space: nowrap;
+    max-width: 300px;
+    white-space: normal;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.tooltip-content::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #2c3e50;
+}
+
+.tooltip:hover .tooltip-content {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Rule History Specific Tooltips */
+.rule-history-tooltip {
+    position: absolute;
+    z-index: 1001;
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    max-width: 400px;
+    min-width: 300px;
+}
+
+.rule-history-tooltip .tooltip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.rule-history-tooltip .rule-number {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.rule-history-tooltip .close-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #7f8c8d;
+    padding: 0;
+    line-height: 1;
+}
+
+.rule-history-tooltip .close-btn:hover {
+    color: #2c3e50;
+}
+
+.rule-history-item {
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.rule-history-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.rule-history-date {
+    font-size: 0.75rem;
+    color: #7f8c8d;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.rule-history-type {
+    display: inline-block;
+    padding: 0.125rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.rule-history-type.inducted {
+    background: #d4edda;
+    color: #155724;
+}
+
+.rule-history-type.modified {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.rule-history-type.deprecated {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.rule-history-description {
+    font-size: 0.875rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.rule-history-author {
+    font-size: 0.75rem;
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+/* Interactive Rule Icons */
+.rule-history-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1rem;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    padding: 0.25rem;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.8);
+}
+
+.rule-history-icon:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.rule-recently-changed {
+    position: relative;
+}
+
+.rule-recently-changed::before {
+    content: "🆕";
+    position: absolute;
+    left: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.875rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Modal for detailed rule history */
+.rule-history-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.rule-history-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.rule-history-modal-content {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.rule-history-modal.active .rule-history-modal-content {
+    transform: scale(1);
+}
+
+.rule-history-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.rule-history-modal-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.rule-history-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #7f8c8d;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.rule-history-modal-close:hover {
+    color: #2c3e50;
+    background: #f8f9fa;
+}
+
+.rule-history-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.rule-history-timeline::before {
+    content: "";
+    position: absolute;
+    left: 0.75rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e9ecef;
+}
+
+.rule-history-timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.rule-history-timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -1.75rem;
+    top: 1.5rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #3498db;
+    border: 3px solid white;
+    box-shadow: 0 0 0 2px #3498db;
+}
+
+.rule-history-timeline-item.inducted::before {
+    background: #27ae60;
+    box-shadow: 0 0 0 2px #27ae60;
+}
+
+.rule-history-timeline-item.modified::before {
+    background: #f39c12;
+    box-shadow: 0 0 0 2px #f39c12;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .rule-history-modal {
+        padding: 1rem;
+    }
+    
+    .rule-history-modal-content {
+        padding: 1.5rem;
+        max-height: 90vh;
+    }
+    
+    .rule-history-tooltip {
+        max-width: 280px;
+        min-width: 250px;
+    }
+    
+    .rule-history-timeline {
+        padding-left: 1.5rem;
+    }
+    
+    .rule-history-timeline-item::before {
+        left: -1.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tooltip-content {
+        max-width: 200px;
+        font-size: 0.75rem;
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .rule-history-icon {
+        font-size: 0.875rem;
+        right: 0.5rem;
+    }
+    
+    .rule-recently-changed::before {
+        left: -1.5rem;
+        font-size: 0.75rem;
+    }
+}

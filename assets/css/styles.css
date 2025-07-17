@@ -1,0 +1,466 @@
+/* Master Bartending Championship Rules - Main Styles */
+
+/* CSS Variables */
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --background-color: #ffffff;
+    --surface-color: #f8f9fa;
+    --text-color: #2c3e50;
+    --text-light: #7f8c8d;
+    --border-color: #e9ecef;
+    --shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.5em;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+a:hover {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Navigation */
+.site-nav {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.site-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background: rgba(255,255,255,0.2);
+    text-decoration: none;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    transition: var(--transition);
+}
+
+/* Main Content */
+.main-content {
+    min-height: calc(100vh - 200px);
+    padding: 2rem 0;
+}
+
+/* Discipline Grid */
+.discipline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.discipline-card {
+    background: var(--surface-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+}
+
+.discipline-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.discipline-card h3 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.discipline-card h3 a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.discipline-card p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.discipline-card small {
+    color: var(--text-light);
+    font-size: 0.875rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-primary {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2980b9;
+    text-decoration: none;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--secondary-color);
+    border: 2px solid var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    background: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+}
+
+/* Rule Page Styles */
+.rule-page {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.rule-header {
+    background: var(--surface-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.rule-breadcrumb {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.rule-breadcrumb a {
+    color: var(--secondary-color);
+}
+
+.rule-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.rule-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+.rule-details span {
+    background: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+
+.rule-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.rule-content {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+}
+
+.rule-content h3[id^="rule-"] {
+    position: relative;
+    padding: 1rem;
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    border-left: 4px solid var(--secondary-color);
+    margin: 2rem 0 1rem 0;
+}
+
+.rule-content h3[id^="rule-"]:target {
+    background: #fff3cd;
+    border-left-color: var(--warning-color);
+    animation: highlight 2s ease-out;
+}
+
+@keyframes highlight {
+    0% { background-color: #fff3cd; }
+    100% { background-color: var(--surface-color); }
+}
+
+.rule-history-icon {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 1.2rem;
+    opacity: 0.6;
+    transition: var(--transition);
+}
+
+.rule-history-icon:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Rule Navigation */
+.rule-navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.nav-prev,
+.nav-next {
+    flex: 1;
+    padding: 1rem;
+    background: var(--surface-color);
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.nav-prev:hover,
+.nav-next:hover {
+    background: var(--secondary-color);
+    color: white;
+    text-decoration: none;
+}
+
+.nav-next {
+    text-align: right;
+}
+
+/* Related Content */
+.related-content {
+    background: var(--surface-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    margin-bottom: 2rem;
+}
+
+.related-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.related-content li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.related-content li:last-child {
+    border-bottom: none;
+}
+
+/* Footer */
+.site-footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 3rem 0 1rem;
+    margin-top: 4rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-section h4 {
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    padding: 0.25rem 0;
+}
+
+.footer-section a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 2rem 0 0;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--primary-color);
+        flex-direction: column;
+        padding: 1rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+    }
+    
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .rule-meta {
+        flex-direction: column;
+    }
+    
+    .rule-actions {
+        align-self: stretch;
+    }
+    
+    .rule-navigation {
+        flex-direction: column;
+    }
+    
+    .nav-next {
+        text-align: left;
+    }
+    
+    .discipline-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .rule-header,
+    .rule-content,
+    .related-content {
+        padding: 1rem;
+    }
+    
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+}

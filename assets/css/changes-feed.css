@@ -1,0 +1,248 @@
+/* Changes Feed Styles */
+
+.change-entry {
+    background: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-left: 4px solid #3498db;
+    transition: all 0.3s ease;
+}
+
+.change-entry:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+/* Impact-based styling */
+.change-impact-high {
+    border-left-color: #e74c3c;
+}
+
+.change-impact-medium {
+    border-left-color: #f39c12;
+}
+
+.change-impact-low {
+    border-left-color: #27ae60;
+}
+
+.change-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.change-date {
+    font-size: 0.875rem;
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+.change-discipline {
+    background: #ecf0f1;
+    color: #2c3e50;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.change-title {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+}
+
+.change-title a {
+    color: #2c3e50;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.change-title a:hover {
+    color: #3498db;
+}
+
+.change-description {
+    color: #7f8c8d;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+/* Diff styling */
+.change-diff {
+    background: #f8f9fa;
+    border-radius: 6px;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 1px solid #e9ecef;
+}
+
+.diff-removed {
+    margin-bottom: 1rem;
+}
+
+.diff-removed strong {
+    color: #e74c3c;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.diff-removed del {
+    background: #fdf2f2;
+    color: #721c24;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    text-decoration: line-through;
+    display: block;
+    border-left: 3px solid #f5c6cb;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+.diff-added strong {
+    color: #27ae60;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.diff-added {
+    background: #f0f9f0;
+    color: #155724;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    border-left: 3px solid #c3e6cb;
+    padding-left: 0.75rem;
+    margin: 0.5rem 0;
+}
+
+.change-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e9ecef;
+    font-size: 0.875rem;
+    color: #7f8c8d;
+}
+
+.change-meta a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.change-meta a:hover {
+    text-decoration: underline;
+}
+
+/* View all changes link */
+.view-all-changes {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.view-all-changes a {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.view-all-changes a:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+/* Change filters (for future implementation) */
+.change-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.filter-button {
+    padding: 0.5rem 1rem;
+    border: 2px solid #e9ecef;
+    background: white;
+    color: #7f8c8d;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+}
+
+.filter-button:hover,
+.filter-button.active {
+    border-color: #3498db;
+    color: #3498db;
+    background: #ecf7fd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .change-entry {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .change-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .change-diff {
+        padding: 0.75rem;
+    }
+    
+    .diff-removed del,
+    .diff-added {
+        padding-left: 0.5rem;
+    }
+    
+    .change-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .change-entry {
+        padding: 0.75rem;
+        border-radius: 6px;
+    }
+    
+    .change-title {
+        font-size: 1.1rem;
+    }
+    
+    .change-diff {
+        padding: 0.5rem;
+        margin: 0.75rem 0;
+    }
+    
+    .view-all-changes a {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.875rem;
+    }
+}

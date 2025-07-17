@@ -1,0 +1,111 @@
+---
+layout: default
+---
+
+<div class="rule-page">
+    <!-- Rule Page Header -->
+    <div class="rule-header">
+        <div class="rule-breadcrumb">
+            <a href="/">Home</a> > 
+            <a href="/rules/">Rules</a> > 
+            <span>{{ page.discipline }}</span>
+        </div>
+        
+        <div class="rule-meta">
+            <div class="rule-info">
+                <h1>{{ page.title }}</h1>
+                <div class="rule-details">
+                    <span class="valid-from">Valid from: {{ page.valid_from }}</span>
+                    <span class="last-edited">Last edited: {{ page.last_edited }} by {{ page.editor }}</span>
+                    <span class="rule-range">Rules {{ page.rule_range }}</span>
+                </div>
+            </div>
+            
+            <div class="rule-actions">
+                <a href="{{ site.github.repository_url }}/blob/main/{{ page.path }}" class="btn btn-secondary" target="_blank">
+                    📝 Edit on GitHub
+                </a>
+                <button class="btn btn-primary" onclick="window.print()">
+                    🖨️ Print Rules
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rule Content -->
+    <div class="rule-content">
+        {{ content }}
+    </div>
+
+    <!-- Rule Navigation -->
+    <div class="rule-navigation">
+        {% assign current_discipline = page.discipline %}
+        {% assign all_rules = site.rules | where: "discipline", current_discipline %}
+        
+        {% for rule in all_rules %}
+            {% if rule.url == page.url %}
+                {% assign current_index = forloop.index0 %}
+                {% assign prev_rule = all_rules[current_index - 1] %}
+                {% assign next_rule = all_rules[current_index + 1] %}
+                {% break %}
+            {% endif %}
+        {% endfor %}
+
+        <div class="nav-links">
+            {% if prev_rule %}
+            <a href="{{ prev_rule.url }}" class="nav-prev">
+                ← Previous: {{ prev_rule.title }}
+            </a>
+            {% endif %}
+            
+            {% if next_rule %}
+            <a href="{{ next_rule.url }}" class="nav-next">
+                Next: {{ next_rule.title }} →
+            </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Related Links -->
+    <div class="related-content">
+        <h3>Related Resources</h3>
+        <ul>
+            {% if page.discipline == "Speed Cocktail Bartending" %}
+            <li><a href="/recipes/">Competition Cocktail Recipes</a></li>
+            <li><a href="/equipment/standardized-equipment/">Required Equipment</a></li>
+            {% elsif page.discipline == "Traditional Cocktail Bartending" %}
+            <li><a href="/rules/membership/">Membership Guidelines</a></li>
+            {% endif %}
+            <li><a href="/changelog/">Complete Change History</a></li>
+            <li><a href="{{ site.github.repository_url }}/issues">Report Issues or Suggestions</a></li>
+        </ul>
+    </div>
+</div>
+
+<!-- Enhanced Rule History Tooltips -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Add history tooltips to rule headings
+    const ruleHeadings = document.querySelectorAll('h3[id^="rule-"]');
+    
+    ruleHeadings.forEach(heading => {
+        const ruleNumber = heading.id.replace('rule-', '');
+        const historyIcon = document.createElement('span');
+        historyIcon.className = 'rule-history-icon';
+        historyIcon.innerHTML = 'ℹ️';
+        historyIcon.title = 'Click for rule history';
+        
+        // Add click handler for rule history modal
+        historyIcon.addEventListener('click', function() {
+            showRuleHistory(ruleNumber);
+        });
+        
+        heading.appendChild(historyIcon);
+    });
+});
+
+function showRuleHistory(ruleNumber) {
+    // This will be enhanced with actual history data
+    alert(`Rule ${ruleNumber} history will be displayed here`);
+}
+</script>

@@ -1,0 +1,74 @@
+---
+layout: default
+---
+
+<div class="recipe-page">
+    <!-- Recipe Page Header -->
+    <div class="rule-header">
+        <div class="rule-breadcrumb">
+            <a href="/">Home</a> > 
+            <a href="/recipes/">Recipes</a> > 
+            <span>{{ page.cocktail_name }}</span>
+        </div>
+        
+        <div class="rule-meta">
+            <div class="rule-info">
+                <h1>{{ page.title }}</h1>
+                <div class="rule-details">
+                    <span class="category">{{ page.category }}</span>
+                    <span class="cocktail-type">Standardized Competition Recipe</span>
+                </div>
+            </div>
+            
+            <div class="rule-actions">
+                <a href="{{ site.github.repository_url }}/blob/main/{{ page.path }}" class="btn btn-secondary" target="_blank">
+                    📝 Edit on GitHub
+                </a>
+                <button class="btn btn-primary" onclick="window.print()">
+                    🖨️ Print Recipe
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recipe Content -->
+    <div class="rule-content recipe-content">
+        {{ content }}
+    </div>
+
+    <!-- Related Links -->
+    <div class="related-content">
+        <h3>Related Resources</h3>
+        <ul>
+            <li><a href="/rules/speed-cocktail-bartending/">Speed Cocktail Bartending Rules</a></li>
+            <li><a href="/equipment/standardized-equipment/">Required Equipment</a></li>
+            <li><a href="/recipes/">All Competition Recipes</a></li>
+        </ul>
+    </div>
+</div>
+
+<style>
+.recipe-content h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+}
+
+.recipe-content ul {
+    background: #f8f9fa;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+}
+
+.recipe-content li {
+    margin: 0.5rem 0;
+    font-weight: 500;
+}
+
+.recipe-content li strong {
+    color: #e74c3c;
+    font-weight: 600;
+}
+</style>

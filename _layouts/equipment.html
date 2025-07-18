@@ -1,0 +1,69 @@
+---
+layout: default
+---
+
+<div class="equipment-page">
+    <!-- Equipment Page Header -->
+    <div class="rule-header">
+        <div class="rule-breadcrumb">
+            <a href="/">Home</a> > 
+            <a href="/equipment/">Equipment</a> > 
+            <span>{{ page.title }}</span>
+        </div>
+        
+        <div class="rule-meta">
+            <div class="rule-info">
+                <h1>{{ page.title }}</h1>
+                <div class="rule-details">
+                    <span class="category">{{ page.category }}</span>
+                    <span class="equipment-type">Competition Standards</span>
+                </div>
+            </div>
+            
+            <div class="rule-actions">
+                <a href="{{ site.github.repository_url }}/blob/main/{{ page.path }}" class="btn btn-secondary" target="_blank">
+                    📝 Edit on GitHub
+                </a>
+                <button class="btn btn-primary" onclick="window.print()">
+                    🖨️ Print Specifications
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Equipment Content -->
+    <div class="rule-content equipment-content">
+        {{ content }}
+    </div>
+
+    <!-- Related Links -->
+    <div class="related-content">
+        <h3>Related Resources</h3>
+        <ul>
+            <li><a href="/rules/speed-cocktail-bartending/">Speed Cocktail Bartending Rules</a></li>
+            <li><a href="/recipes/">Competition Recipes</a></li>
+            <li><a href="/rules/traditional-bartending/">Traditional Competition Rules</a></li>
+        </ul>
+    </div>
+</div>
+
+<style>
+.equipment-content h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #27ae60;
+    padding-bottom: 0.5rem;
+    margin-top: 2rem;
+}
+
+.equipment-content p strong {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.equipment-content ul {
+    background: #f8f9fa;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    border-left: 4px solid #27ae60;
+}
+</style>

@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is the Master Bartending Championship (MBC) rules repository. It's a Jekyll-based GitHub Pages site that hosts official competition rules with version control, change tracking, and iframe embedding capabilities.
 
 **Live Site**: https://trapadl.github.io/mbc_rules  
+**Contact**: cocktails+mbc@trapadl.com  
 **Purpose**: Git-based rule management with transparency, collaboration, and automation
 
 ## Repository Structure

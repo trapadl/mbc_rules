@@ -97,7 +97,7 @@ include:
 mbc:
   current_version: "2025.1"
   last_updated: "2025-07-17"
-  contact_email: "lachlan@example.com"
+  contact_email: "cocktails+mbc@trapadl.com"
   
 # Rule change tracking
 recent_changes_months: 3

@@ -1,0 +1,150 @@
+<!-- Work in Progress Notice Banner -->
+<div id="wip-notice" class="wip-notice">
+    <div class="wip-content">
+        <div class="wip-icon">🚧</div>
+        <div class="wip-text">
+            <strong>New Rules System in Development</strong> - 
+            This new Git-based rules system is currently a work in progress. Some pages may not load correctly while we transition from our legacy system. We appreciate your patience as we build a more transparent and collaborative rules platform.
+        </div>
+        <button class="wip-close" onclick="dismissWipNotice()" aria-label="Dismiss notice">
+            ×
+        </button>
+    </div>
+</div>
+
+<style>
+.wip-notice {
+    background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+    color: white;
+    padding: 1rem 0;
+    text-align: center;
+    position: relative;
+    z-index: 1001;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-bottom: 3px solid rgba(255,255,255,0.2);
+}
+
+.wip-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.wip-icon {
+    font-size: 1.5rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.wip-text {
+    flex: 1;
+    min-width: 300px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.wip-text strong {
+    font-weight: 600;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.wip-close {
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.wip-close:hover {
+    background: rgba(255,255,255,0.3);
+    transform: scale(1.1);
+}
+
+.wip-notice.dismissed {
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .wip-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+    
+    .wip-text {
+        min-width: auto;
+        font-size: 0.875rem;
+    }
+    
+    .wip-close {
+        position: absolute;
+        top: 0.5rem;
+        right: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .wip-notice {
+        padding: 0.75rem 0;
+    }
+    
+    .wip-text {
+        font-size: 0.8rem;
+        padding-right: 3rem;
+    }
+}
+</style>
+
+<script>
+function dismissWipNotice() {
+    const notice = document.getElementById('wip-notice');
+    notice.classList.add('dismissed');
+    
+    // Store dismissal in localStorage so it stays dismissed
+    localStorage.setItem('mbc-wip-notice-dismissed', 'true');
+    
+    setTimeout(() => {
+        notice.style.display = 'none';
+    }, 300);
+}
+
+// Check if notice was previously dismissed
+document.addEventListener('DOMContentLoaded', function() {
+    const dismissed = localStorage.getItem('mbc-wip-notice-dismissed');
+    if (dismissed === 'true') {
+        const notice = document.getElementById('wip-notice');
+        notice.style.display = 'none';
+    }
+});
+
+// Auto-dismiss after 30 seconds if user doesn't interact
+setTimeout(() => {
+    const notice = document.getElementById('wip-notice');
+    if (notice && !notice.classList.contains('dismissed')) {
+        notice.style.opacity = '0.8';
+    }
+}, 30000);
+</script>

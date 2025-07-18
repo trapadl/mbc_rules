@@ -100,6 +100,16 @@
             opacity: 1;
         }
         
+        /* iframe WIP notice */
+        .iframe-wip-notice {
+            background: #f39c12;
+            color: white;
+            padding: 0.5rem;
+            text-align: center;
+            font-size: 0.75rem;
+            margin: -10px -10px 10px -10px;
+        }
+        
         /* Responsive adjustments for small iframes */
         @media (max-width: 600px) {
             body {
@@ -111,10 +121,21 @@
                 padding: 5px;
                 margin: -5px -5px 15px -5px;
             }
+            
+            .iframe-wip-notice {
+                margin: -5px -5px 10px -5px;
+                font-size: 0.7rem;
+                padding: 0.375rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Work in Progress Notice for iframe -->
+    <div class="iframe-wip-notice">
+        🚧 <strong>Beta:</strong> New rules system in development - some features may not work correctly yet.
+    </div>
+    
     <!-- Minimal Header for iframe -->
     <div class="iframe-header">
         <h1 class="iframe-title">{{ page.title | default: site.title }}</h1>
